@@ -12,9 +12,18 @@
         </header>
 
         <main>
-            <ul id="tasksList">
-                
-            </ul>
+            <h2>Liste des tâches</h2>
+            <ul id="tasksList"></ul>
+
+            <h2>Ajouter une tâche</h2>
+            <form action="http://localhost:3000/api/tasks" method="POST">
+                <input type="text" name="newTaskContent">
+                <select name="newTaskType">
+                    <option value="WORK">Travail</option>
+                    <option value="LIFE">Loisir</option>
+                </select>
+                <button type="submit">Ajouter</button>
+            </form>
         </main>
 
         <footer>Under MIT Licence</footer>
