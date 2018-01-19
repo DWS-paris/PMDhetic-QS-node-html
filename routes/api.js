@@ -122,21 +122,15 @@ Définition des routes
 
     // Afficher la liste des posts
     router.get( '/tasks', (req, res) => {
-        // Ouvrir la connexion à la BDD
-        connection.connect();
+        // Lancer la requête SQL
+        connection.query('SELECT * FROM tasks', (error, results, fields) => {
+            if (error) {
+                res.json({ content: error })
 
-            // Lancer la requête SQL
-            connection.query('SELECT * FROM tasks', (error, results, fields) => {
-                if (error) {
-                    res.json({ content: error })
-
-                } else{
-                    res.json( { content: results, fields: fields } )
-                }
-            });
-            
-        // Fermer la connexion à la BDD
-        connection.end();
+            } else{
+                res.json( { content: results, fields: fields } )
+            }
+        });
     });
 //
 

@@ -1,9 +1,20 @@
 // Attendre le chargement du DOM
 document.addEventListener('DOMContentLoaded', () => {
+
+    let tasksList = document.querySelector('#tasksList');
+    
+    // Créer une fonction pour ajoutrer des éléments dans le DOM
+    let appendTags = ( paramData ) => {
+        // Faire une boucle sur la colleciton de données
+        for( let item of paramData ){            
+            // Ajouter des balise HTML dans tasksList
+            tasksList.innerHTML += `<li>${item.content} (${item.category}) ${item.isDone}</li>`;
+        };
+    };
     
 
     // Créer une fonction pour la requête
-    var asyncLoadFunction = function asyncLoadFunction(theApiUrl) {
+    let asyncLoadFunction = (theApiUrl) => {
         // La fonction fetch() prend en paramètre l'adresse de l'API
         fetch(theApiUrl).then(function (data) {
             // Les données sont présentes => renvoyer une Promise de type 'resolve'
@@ -24,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Manipuler les données de la réponse
         .then(function (data) {
-            console.log(data)
+            // Appeler la fonction pour ajouter des balises HTML
+            appendTags(data.content);
         })
 
         // Capter l'erreur
@@ -33,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
+    // Appeler la fonction async
     asyncLoadFunction('http://localhost:3000/api/tasks')
 
 
