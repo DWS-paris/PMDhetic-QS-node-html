@@ -21,13 +21,27 @@ Configurer la connexion à la BDD
 /*
 Définition des routes
 */
+    // Accueil de l'API
     router.get( '/', (req, res) => {
+        // Renvoyer un flux JSON dans la réponse
+        res.json( { content: 'Hello API' } );
+    });
+
+    // Afficher la liste des posts
+    router.get( '/tasks', (req, res) => {
         // Ouvrir la connexion à la BDD
         connection.connect();
 
-            // Renvoyer un flux JSON dans la réponse
-            res.json( { content: 'Hello API' } );
+            // Lancer la requête SQL
+            connection.query('SELECT * FROM tasks', (error, results, fields) => {
+                if (error) {
+                    res.json({ content: error })
 
+                } else{
+                    res.json( { content: results, fields: fields } )
+                }
+            });
+            
         // Fermer la connexion à la BDD
         connection.end();
     });
