@@ -23,8 +23,8 @@ Initialiser le serveur
     app.use( express.static(path.join(__dirname, 'www')) );
 
     // Définir le moteur de rendu
-    app.engine( 'html', ejs.renderFile );
-    app.set( 'view engine', 'html' );
+    // app.engine( 'html', ejs.renderFile );
+    app.set( 'view engine', 'ejs' );
 
     // Configurer les routes
     app.use('/', frontRoute);
