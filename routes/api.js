@@ -56,6 +56,13 @@ Définition des routes
             db.close();
         });
     });
+
+
+    // Créer une route API pour ajouter un article
+    router.post('/add-post', (req, res)=> {
+        console.log(req.body)
+        res.render('add-post');
+    });
 //
 
 /*

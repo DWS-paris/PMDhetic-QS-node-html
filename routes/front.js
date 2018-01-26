@@ -42,6 +42,12 @@ Définition des routes
             db.close();
         });
     });
+
+
+    // Créefr une route pour ajouter un article
+    router.get('/add-post', (req, res)=> {
+        res.render('add-post');
+    });
 //
 
 /*
