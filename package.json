@@ -1,5 +1,5 @@
 {
-  "name": "node-html-qs",
+  "name": "node-html-mongo-qs",
   "version": "1.0.0",
   "description": "Dossier permettant d'initier un serveur NodeJS avec des vues HTML",
   "main": "server.js",

@@ -46,7 +46,41 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Appeler la fonction async
-    asyncLoadFunction('http://localhost:3000/api/tasks')
+    asyncLoadFunction('http://localhost:3000/api/tasks');
 
 
-}); // Fin de l'attente de cha rgement du DOM
+
+    /*
+    Capter la soumission du formulaire
+    */
+        let addTaskForm = document.querySelector('#addTaskForm');
+        addTaskForm.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+
+            // Récupération de la valeur des champs
+            let newTaskContent = document.querySelector('[name="newTaskContent"]').value;
+            let newTaskType = document.querySelector('[name="newTaskType"]').value;
+
+            fetch('http://localhost:3000/api/tasks', {
+                // Configuration de la requête en POST
+                method: 'post',
+                headers: {
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                },
+                // Envoie des données dans l'URL
+                body: 'newTaskContent=' + newTaskContent + '&newTaskType=' + newTaskType
+                
+            }).then( res => {
+                return res.json();
+
+            }).then( data => {
+                console.log(data);
+
+            }).catch(err => {
+                console.log(err);
+            })
+        });
+    //
+
+
+}); // Fin de l'attente de chargement du DOM

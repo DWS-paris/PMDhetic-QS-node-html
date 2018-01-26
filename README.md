@@ -165,3 +165,53 @@ Notre projet va utiliser une base de données MYsql, il faut donc ajouter une d�
 npm install --save mysql
 ```
 > Il faut ensuite configurer le module dans le route API.
+
+# Configurer MongoDB
+Dans un premier temps il faut installer le système de gestion MongoDB en suivant l'une des méthode à l'adresse suvante : (https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
+
+Une fois le système installer, il faut ouvrir une fenêtre de terminal pour tester la commande :
+```
+mongod
+```
+> Si la gestionnaife est installé, une message s'affiche et sinon, il faut réinstaller.
+
+Pour préparer le travail à suivre, il faut créer une dossier nommé `data` à la racine du serveur. Ce dossier nous permettra de lancer le serveur de bbase de donn,ées directement dans notre application.
+
+Une fois le dossier créer, il faut ouvrir une nouvelle fenêtre de terminal dans le dossier du serveur :
+```
+MAC
+sudo mongod --dbpath data --port 27018
+
+WINDOWS
+mongod --dbpath data --port 27018
+```
+> Pour Windows il faut ouvrir un invité de commande en mode ADMIN.
+> L'option `--port` permet de définir le port à ouvrior sur le serveur.
+> Ne surtout pas couper le serveur de base de données pendant le travail.
+
+## Les commandes Mongo (shell)
+Afficher les base de données :
+```
+show dbs
+```
+
+Utiliser et/ou créer une base de données :
+```
+use blog
+```
+> Blog est le nom de la base à utiliser et/ou à créer.
+
+Créer une collection de données (eq. table SQL) :
+```
+db.createCollection('posts')
+```
+
+Afficher les collections de données :
+```
+show collections
+```
+
+Ajouter un objet dans une collection :
+````
+ db.posts.insert({title: "Le titre", content:"Le contenu"})
+```

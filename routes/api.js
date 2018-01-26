@@ -4,6 +4,7 @@ Importer les composants de la route
     const express = require('express');
     const router = express.Router();
     const mySql = require('mysql');
+    const bodyParser = require('body-parser');
 //
 
 const dataCollection = [
@@ -112,6 +113,13 @@ Configurer la connexion à la BDD
 //
 
 /*
+Configuration de body-parser
+*/
+    router.use(bodyParser.json());
+    router.use(bodyParser.urlencoded({extended: false}));
+//
+
+/*
 Définition des routes
 */
     // Accueil de l'API
@@ -132,6 +140,25 @@ Définition des routes
             }
         });
     });
+
+    // Créer une route en mode POST
+    router.post('/tasks', (req, res) => {
+      console.log(req.body);
+      connection.query(`
+        INSERT INTO tasks 
+        (content, category) 
+        VALUES (${req.body.newTaskContent}, ${req.body.newTaskType})
+      )
+        
+      `, (error, results, fields) => {
+        if (error) {
+            res.json({ content: error })
+
+        } else{
+            res.json( { content: results, fields: fields } )
+        }
+    });
+  });
 //
 
 /*
