@@ -61,7 +61,33 @@ Définition des routes
     // Créer une route API pour ajouter un article
     router.post('/add-post', (req, res)=> {
         console.log(req.body)
-        res.render('add-post');
+
+        // Connexion à la BDD MongoDB
+        mongoose.connect( mongoServeur, ( err, db ) => {
+
+            // Tester la connexion à la BDD
+            if( err ) { res.render('add-post', { msg: err }) }
+            else {
+
+                // Connexion ouverte : ajouter les données dans la BDD
+                db.collection('posts').insert( { 
+                    title: req.body.title, 
+                    content: req.body.content,
+                    type: req.body.type 
+
+                }, (err, newObject) => {
+                    // Vérifier l'ajout
+                    if( err ) { res.render('add-post', { msg: err }) }
+                    else{
+                        res.render('add-post', { msg: newObject })
+                    };
+                });
+            };
+
+            // Fermer la connexion
+            db.close();
+        });
+
     });
 //
 
