@@ -189,46 +189,46 @@ mongod --dbpath data --port 27018
 > L'option `--port` permet de définir le port à ouvrior sur le serveur.
 > Ne surtout pas couper le serveur de base de données pendant le travail.
 
-<br>
+<br/>
 ## Les commandes Mongo (shell)
 Afficher les base de données :
 ```
 show dbs
 ```
 
-<br>
+<br/>
 Utiliser et/ou créer une base de données :
 ```
 use blog
 ```
 > Blog est le nom de la base à utiliser et/ou à créer.
 
-<br>
+<br/>
 Créer une collection de données (eq. table SQL) :
 ```
 db.createCollection('posts')
 ```
 
-<br>
+<br/>
 Afficher les collections de données :
 ```
 show collections
 ```
 
-<br>
+<br/>
 Ajouter un objet dans une collection :
 ```
  db.posts.insert({title: "Le titre", content:"Le contenu"})
 ```
 
-<br>
+<br/>
 Afficher le contenu d'une collection :
 ```
 db.posts.find().pretty()
 ```
 > L'option `pretty()` donne un affichage plus `pretty`
 
-<br>
+<br/>
 Nous allons à présent créer plusieurs objets dans la collection `post`:
 ```
 db.posts.insert([{ "type" : "IMG", "title" : "Une image de sport", "content" : "http://lorempixel.com/400/200/sports", "tags" : [ "sport", "image" ], "data": { "author": "Julien Noyer", "state": "ONLINE", "likes": 10 } }, { "type" : "QUOTE", "title" : "Lorem ipsum dolor ismet", "content" : "", "tags" : [ "lorem", "image" ], "data": { "author": "John Doe", "state": "DRAFT", "likes": 0 } }, { "type" : "VID", "title" : "The Gladiators", "content" : "P8BKRCpVoug", "tags" : [ "rasta", "video" ], "data": { "author": "Julien Noyer", "state": "DRAFT", "likes": 0 } }, { "type" : "IMG", "title" : "Lorem ipsum dolor ismet", "content" : "http://lorempixel.com/400/200/people", "tags" : [ "lorem", "image" ], "data": { "author": "Carla Santa", "state": "ONLINE", "likes": 30 } }, { "type" : "IMG", "title" : "Une image de chat", "content" : "http://lorempixel.com/400/200/cat", "tags" : [ "chat", "image" ], "data": { "author": "John Doe", "state": "ONLINE", "likes": 20 } }])
