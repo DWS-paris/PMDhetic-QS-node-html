@@ -12,6 +12,15 @@
         </header>
 
         <main>
+            
+            <!-- Faire une boucle sur la collection de données -->
+            <% for(let item of data) { %>
+                <article>
+                    <h2><%= item.title %> <b><%= item.type %></b></h2>
+                    <p><%= item.content %></p>
+                </article>
+            <% } %>
+
         </main>
 
         <footer>Under MIT Licence</footer>
