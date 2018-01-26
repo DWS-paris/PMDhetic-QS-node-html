@@ -229,7 +229,8 @@ db.posts.find().pretty()
 > L'option `pretty()` donne un affichage plus `pretty`
 
 <br/>
-Nous allons à présent créer plusieurs objets dans la collection `post`:
+Nous allons à présent créer plusieurs objets dans la collection `post` :
+
 ```
 db.posts.insert([{ "type" : "IMG", "title" : "Une image de sport", "content" : "http://lorempixel.com/400/200/sports", "tags" : [ "sport", "image" ], "data": { "author": "Julien Noyer", "state": "ONLINE", "likes": 10 } }, { "type" : "QUOTE", "title" : "Lorem ipsum dolor ismet", "content" : "", "tags" : [ "lorem", "image" ], "data": { "author": "John Doe", "state": "DRAFT", "likes": 0 } }, { "type" : "VID", "title" : "The Gladiators", "content" : "P8BKRCpVoug", "tags" : [ "rasta", "video" ], "data": { "author": "Julien Noyer", "state": "DRAFT", "likes": 0 } }, { "type" : "IMG", "title" : "Lorem ipsum dolor ismet", "content" : "http://lorempixel.com/400/200/people", "tags" : [ "lorem", "image" ], "data": { "author": "Carla Santa", "state": "ONLINE", "likes": 30 } }, { "type" : "IMG", "title" : "Une image de chat", "content" : "http://lorempixel.com/400/200/cat", "tags" : [ "chat", "image" ], "data": { "author": "John Doe", "state": "ONLINE", "likes": 20 } }])
 ```
